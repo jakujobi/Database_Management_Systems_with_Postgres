@@ -288,3 +288,14 @@ Candidate Key
 
 Choose one candidate key to be primary key
 - 
+
+#!markdown
+
+Lecture 4
+Use  ; at the end of a statement, it improves readability.
+
+#!sql
+
+select student_id
+    from student
+    where dept_name = 'Comp. Sci.' and tot_cred > 100;
