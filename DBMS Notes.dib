@@ -232,7 +232,7 @@ Late 1960s and 1970s
 
 #!markdown
 
-# Relational Databases
+## Relational Databases
 
 #!markdown
 
@@ -369,12 +369,21 @@ CREATE TABLE student_in_class (
 
 #!markdown
 
-# **Database**
----
+## What is PostgreSQL
+PostgreSQL is a powerful, open source object-relational database system.
+- It is used for backend database both web and desktop applications.
+- PostgreSQL is considered to be the primary open source database choice when migrating from commercial databases such as Oracle or Microsoft SQL Server.
+- Supports Python, C, C++, C#, Java, Perl, Ruby, Go, Tcl, Node.js
+
+#### History
+- Was invented at the University of California, Berkeley in the computer science department.
+- Started as an open-source project in 1986
+- Earlier ran on UNIX, but can now be run on Windows, OS X, and FreeBSD
 
 #!markdown
 
-# Practice
+# **Practice**
+---
 
 #!sql
 
@@ -397,71 +406,77 @@ e.g [Optional]
 
 #!markdown
 
-# **Database Operations**
+# **Creating and Modifying Tables and Data**
 ---
 
 #!markdown
 
-## What is PostgreSQL
-PostgreSQL is a powerful, open source object-relational database system.
-- It is used for backend database both web and desktop applications.
-- PostgreSQL is considered to be the primary open source database choice when migrating from commercial databases such as Oracle or Microsoft SQL Server.
-- Supports Python, C, C++, C#, Java, Perl, Ruby, Go, Tcl, Node.js
-
-#### History
-- Was invented at the University of California, Berkeley in the computer science department.
-- Started as an open-source project in 1986
-- Earlier ran on UNIX, but can now be run on Windows, OS X, and FreeBSD
+## **Creating and Managing Tables**
 
 #!markdown
 
-# **Editing Databases**
----
+### CREATE TABLE ();
+We create tables using the create table statement.
+Then we specify the types and names of the columns.
+
+#!sql
+
+CREATE TABLE students (
+    id int(11) NOT NULL AUTO_INCREMENT,
+    student_id int(11) NOT NULL,
+
+    firstname varchar(255) NOT NULL,
+    lastname varchar(255) NOT NULL,
+    email varchar(255) NOT NULL,
+
+    hometown varchar(255) NOT NULL,
+    year int(11) NOT NULL,
+    tot_cred int(11) NOT NULL,
+    dept_name varchar(255) NOT NULL,
+
+    PRIMARY KEY (student_id)
+    FOREIGN KEY (dept_name) REFERENCES department(dept_name)
+)
+/*
+This creates a table for students
+id | student_id | firstname | lastname | email | hometown | year | tot_cred | dept_name
+*/
 
 #!markdown
 
-## Creating a table
+### Keys
 
 #!markdown
 
-## Insert Into
+### Insert Into
 
 #!markdown
 
-## Fetch Data
+### Fetch Data
 
 #!markdown
 
-## Add Column
+### Add Column
 
 #!markdown
 
-## Update
+### Update
 
 #!markdown
 
-## Alter column
+### Alter column
 
 #!markdown
 
-## Drop Column
+### Drop Column
 
 #!markdown
 
-## Delete
+### Delete
 
 #!markdown
 
-## Drop Table
-
-#!markdown
-
-# **Operations in PostgreSQL**
----
-
-#!markdown
-
-## Operators
+### Drop Table
 
 #!markdown
 
@@ -470,7 +485,11 @@ PostgreSQL is a powerful, open source object-relational database system.
 
 #!markdown
 
-## Select
+## **Data Types**
+
+#!markdown
+
+## **Select**
 
 #!markdown
 
@@ -498,7 +517,7 @@ SELECT student_id, first_name, last_name
 
 #!markdown
 
-### Select Distinct
+### SELECT DISTINCT
 This returns only distinct values.
 So, no duplicate rows will be returned.
 
@@ -534,121 +553,115 @@ SELECT name, salary/12 as monthly_salary
 
 #!markdown
 
-# **Filtering Data**
----
+## **Filtering Data**
 
 #!markdown
 
-## OR
+### OR
 
 #!markdown
 
-## AND
+### AND
 
 #!markdown
 
-## Where
+### Where
 
 #!markdown
 
-## Limit
+### Limit
 
 #!markdown
 
-## LIKE
+### LIKE
 
 #!markdown
 
-## IN
+### IN
 
 #!markdown
 
-## Between
+### Between
 
 #!markdown
 
-## As
+### As
 
 #!markdown
 
-## Fetch
+### Fetch
 
 #!markdown
 
-## Min and Max
+### Min and Max
 
 #!markdown
 
-## IS NULL
+### IS NULL
 
 #!markdown
 
-## Count
+### Count
 
 #!markdown
 
-## SUM
+### SUM
 
 #!markdown
 
-## AVG
+### AVG
 
 #!markdown
 
-# **Joining Tables**
----
+## **Joining Tables**
 
 #!markdown
 
-## Joins
+### Joins
 
 #!markdown
 
-## INNER JOIN
+### INNER JOIN
 
 #!markdown
 
-## LEFT JOIN
+### LEFT JOIN
 
 #!markdown
 
-## RIGHT JOIN
+### RIGHT JOIN
 
 #!markdown
 
-## FULL JOIN
+### FULL JOIN
 
 #!markdown
 
-## CROSS JOIN
+### CROSS JOIN
 
 #!markdown
 
-## UNION
+### UNION
 
 #!markdown
 
-## HAVING
+### HAVING
 
 #!markdown
 
-## EXISTS
+### EXISTS
 
 #!markdown
 
-## ANY
+### ANY
 
 #!markdown
 
-## ALL
+### ALL
 
 #!markdown
 
-## CASE
-
-#!markdown
-
-## O
+### CASE
 
 #!markdown
 
