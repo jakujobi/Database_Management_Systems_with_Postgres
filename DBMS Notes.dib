@@ -18,20 +18,24 @@
 
 #!markdown
 
-# Lecture Note 1
+# **Databases Intro and Postgres Setup**
+---
 
 #!markdown
 
 ## Databases
 
-- Its and organized collection of data stored and accessed electronically
+- An organized collection of data stored and accessed electronically
 - Small ones can be stored on a file system
 - Large ones are hosted on computer clusters or cloud storage
 - Query languages
 
-  - SQL (Structured Query Language): SQL is the most widely used query language for managing and manipulating relational databases. It allows users to perform tasks such as retrieving data, updating records, and creating and modifying database structures.
-  - T-SQL (Transact-SQL): T-SQL is an extension of SQL that is used specifically with Microsoft SQL Server. It includes additional features and capabilities beyond standard SQL.
-  - PL/SQL (Procedural Language/Structured Query Language): PL/SQL is Oracle Corporation's procedural extension for SQL. It allows users to create stored procedures, functions, and triggers within the Oracle database.
+  - SQL (Structured Query Language):
+    - SQL is the most widely used query language for managing and manipulating relational databases. It allows users to perform tasks such as retrieving data, updating records, and creating and modifying database structures.
+  - T-SQL (Transact-SQL):
+    - T-SQL is an extension of SQL that is used specifically with Microsoft SQL Server. It includes additional features and capabilities beyond standard SQL.
+  - PL/SQL (Procedural Language/Structured Query Language)
+    - PL/SQL is Oracle Corporation's procedural extension for SQL. It allows users to create stored procedures, functions, and triggers within the Oracle database.
   - NoSQL Query Languages: NoSQL databases, such as MongoDB and Cassandra, use query languages specific to their database systems. These languages may include JavaScript-like syntax for querying and manipulating data.
   - SPARQL: SPARQL is a query language used for querying data stored in Resource Description Framework (RDF) format, commonly used in semantic web applications and linked data.
 - Security
@@ -299,3 +303,361 @@ Use  ; at the end of a statement, it improves readability.
 select student_id
     from student
     where dept_name = 'Comp. Sci.' and tot_cred > 100;
+
+#!markdown
+
+Each clause on a statement should begin on a new line
+
+#!sql
+
+SELECT student_id, first_name, last_name
+from student
+WHERE ((student_id < 1000) AND year = 2020)
+    OR (student_id > 1000 AND year < 1999)
+ORDER BY student_id
+LIMIT 100;
+/*
+
+
+*/
+
+#!markdown
+
+## Create Database
+
+```sql
+CREATE DATABASE database_name;
+```
+create database identifier
+Supply whatever name you want to call your database "identifier"
+
+#!markdown
+
+### Create Table
+
+```sql
+CREATE TABLE table_name (
+    column1 datatype,
+    column2 datatype,
+    column3 datatype,
+    ...
+);
+```
+
+#!sql
+
+--make a table for a students in a class
+CREATE TABLE student_in_class (
+    student_id INTEGER,
+    class_id INTEGER,
+    PRIMARY KEY (student_id, class_id),
+    FOREIGN KEY (student_id) REFERENCES student(student_id),
+    FOREIGN KEY (class_id) REFERENCES class(class_id)
+);
+
+#!markdown
+
+#### Integrity constraint
+- Primary Key
+  - They have to be non-null and unique by default
+  - Only one primary key can exist in a table
+- Foreign Key
+  - Can be null, or any value from referenced relation's primary key
+  - Multiple foreign keys can exist in a table
+- Not Null
+  - specify a value that is not allowed to be null
+
+#!markdown
+
+# **Database**
+---
+
+#!markdown
+
+# Practice
+
+#!sql
+
+-- This will show the student_ids from the student database that are in computer science, and have more than 100 credits
+select student_id
+    from student
+    where dept_name = 'Comp. Sci.' and tot_cred > 100;
+
+#!sql
+
+--Here, the distict hometowns from the student database will be shown
+SELECT distinct home_town
+    from students
+    WHERE home_town is not null
+
+#!markdown
+
+Square brackets around something means that it is optional.
+e.g [Optional]
+
+#!markdown
+
+# **Database Operations**
+---
+
+#!markdown
+
+## What is PostgreSQL
+PostgreSQL is a powerful, open source object-relational database system.
+- It is used for backend database both web and desktop applications.
+- PostgreSQL is considered to be the primary open source database choice when migrating from commercial databases such as Oracle or Microsoft SQL Server.
+- Supports Python, C, C++, C#, Java, Perl, Ruby, Go, Tcl, Node.js
+
+#### History
+- Was invented at the University of California, Berkeley in the computer science department.
+- Started as an open-source project in 1986
+- Earlier ran on UNIX, but can now be run on Windows, OS X, and FreeBSD
+
+#!markdown
+
+# **Editing Databases**
+---
+
+#!markdown
+
+## Creating a table
+
+#!markdown
+
+## Insert Into
+
+#!markdown
+
+## Fetch Data
+
+#!markdown
+
+## Add Column
+
+#!markdown
+
+## Update
+
+#!markdown
+
+## Alter column
+
+#!markdown
+
+## Drop Column
+
+#!markdown
+
+## Delete
+
+#!markdown
+
+## Drop Table
+
+#!markdown
+
+# **Operations in PostgreSQL**
+---
+
+#!markdown
+
+## Operators
+
+#!markdown
+
+# **Querying Data**
+---
+
+#!markdown
+
+## Select
+
+#!markdown
+
+### SELECT *
+
+This brings data from all the columns from a table
+
+- Considered a bad practice
+  - It retrieves more data than needed
+  - May lead to performance issues
+  - Increaded 
+
+#!sql
+
+-- This will show all columns from the students table
+SELECT *
+    FROM students
+
+#!sql
+
+-- Will bring the data from the students table,
+-- but only the student_id, first_name, and last_name columns
+SELECT student_id, first_name, last_name
+    FROM students
+
+#!markdown
+
+### Select Distinct
+This returns only distinct values.
+So, no duplicate rows will be returned.
+
+#!sql
+
+-- This will return only distinct vhometowns
+SELECT distinct home_town
+    FROM students
+
+#!markdown
+
+### Order By
+
+#!markdown
+
+### Column Aliases
+
+#!markdown
+
+### Calculated Fields
+You can use arithmetic expressions in calculated fields with SELECT statement.
+It does not change the data itself
+
+#!sql
+
+-- Returns the name and the monthly salary of the instructors
+SELECT name, salary/12 as monthly_salary
+    FROM instructor;
+
+#!markdown
+
+### Group By
+
+#!markdown
+
+# **Filtering Data**
+---
+
+#!markdown
+
+## OR
+
+#!markdown
+
+## AND
+
+#!markdown
+
+## Where
+
+#!markdown
+
+## Limit
+
+#!markdown
+
+## LIKE
+
+#!markdown
+
+## IN
+
+#!markdown
+
+## Between
+
+#!markdown
+
+## As
+
+#!markdown
+
+## Fetch
+
+#!markdown
+
+## Min and Max
+
+#!markdown
+
+## IS NULL
+
+#!markdown
+
+## Count
+
+#!markdown
+
+## SUM
+
+#!markdown
+
+## AVG
+
+#!markdown
+
+# **Joining Tables**
+---
+
+#!markdown
+
+## Joins
+
+#!markdown
+
+## INNER JOIN
+
+#!markdown
+
+## LEFT JOIN
+
+#!markdown
+
+## RIGHT JOIN
+
+#!markdown
+
+## FULL JOIN
+
+#!markdown
+
+## CROSS JOIN
+
+#!markdown
+
+## UNION
+
+#!markdown
+
+## HAVING
+
+#!markdown
+
+## EXISTS
+
+#!markdown
+
+## ANY
+
+#!markdown
+
+## ALL
+
+#!markdown
+
+## CASE
+
+#!markdown
+
+## O
+
+#!markdown
+
+# Tips
+- Things in quotation marks are case sensitive.
+  - e.g 'john' is not the same as 'John'
+- write the commands as Capital letters
+  - e.g.
+    - SELECT
+    - FROM
+- Write variable and other names as lowercase
+- 
