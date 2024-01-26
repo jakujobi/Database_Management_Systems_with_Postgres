@@ -485,6 +485,34 @@ id | student_id | firstname | lastname | email | hometown | year | tot_cred | de
 
 #!markdown
 
+## **Keys**
+
+#!markdown
+
+### Primary Key
+This column uniquely identifies each row on the table
+Each of them must be unique.
+    - like student_id, employee_id, social_security_number, username, etc.
+- The primary key can not be Null, and must be unique
+
+#!markdown
+
+### Foreign key
+This is a coulumn that references the primary key of another table
+- Used to maintain referential integrity by creating a link between two tables
+- Ensure that the relationship betwwen two tables remains consisitent
+- The value in the foreign key column must match the primary key in the referenced table or be NULL
+- Allowed to be NULL if the referenced table has a default value for the primary key
+
+#!markdown
+
+### Composite Key
+Its a primary key that is composed of 2 or more columns used together to uniquely identify a record in a table.
+- Useful when no single column uniquely identifies records in that table
+- Each column of a composite key must be unique, but can contain duplicated values
+
+#!markdown
+
 ## **Data Types**
 
 #!markdown
