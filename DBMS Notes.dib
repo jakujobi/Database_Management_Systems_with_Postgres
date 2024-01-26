@@ -411,6 +411,121 @@ e.g [Optional]
 
 #!markdown
 
+## **Keys:**
+
+#!markdown
+
+### Primary Key
+This column uniquely identifies each row on the table
+Each of them must be unique.
+    - like student_id, employee_id, social_security_number, username, etc.
+- The primary key can not be Null, and must be unique
+
+#!sql
+
+CREATE TABLE `notes` (
+    id int(11) NOT NULL AUTO_INCREMENT,
+    title varchar(255) NOT NULL,
+    content text NOT NULL,
+    PRIMARY KEY (`id`)
+)
+
+#!sql
+
+-- Each shirt has a unique primary key which is the SKU number
+CREATE TABLE merch_tshirts (
+    SKU INTEGER PRIMARY KEY
+    XREF INTEGER,
+    name VARCHAR(255),
+    price NUMERIC(12,2), --price is a number with 12 digits, 2 of which are decimals
+    size VARCHAR(4),
+    color VARCHAR(10),
+);
+
+#!markdown
+
+### Foreign key
+This is a coulumn that references the primary key of another table
+- Used to maintain referential integrity by creating a link between two tables
+- Ensure that the relationship betwwen two tables remains consisitent
+- The value in the foreign key column must match the primary key in the referenced table or be NULL
+- Allowed to be NULL if the referenced table has a default value for the primary key
+
+#!sql
+
+CREATE TABLE social_media_post (
+    post_id INTEGER PRIMARY KEY,
+    post_date DATE,
+    post_time TIME,
+    post_text VARCHAR(255),
+    post_likes INTEGER,
+    post_shares INTEGER,
+    post_comments INTEGER,
+    post_views INTEGER,
+    post_user_id INTEGER,
+    FOREIGN KEY (post_type_id) REFERENCES social_media_post_type(post_type_id),
+    FOREIGN KEY (post_user_id) REFERENCES user(id)
+);
+
+#!sql
+
+CREATE TABLE orders (
+    order_id INTEGER PRIMARY KEY,
+    order_date DATE,
+    customer_id INTEGER,
+    product_id INTEGER,
+    FOREIGN KEY (customer_id) REFERENCES customers(customer_id),
+    FOREIGN KEY (product_id) REFERENCES products(product_id)
+);
+/*
+In this example, the `orders` table has two foreign keys, `customer_id` and `product_id`, which reference the primary keys in the `customers` and `products` tables respectively.
+This allows the `orders` table to relate to both the `customers` and `products` tables.
+*/
+
+#!markdown
+
+### Composite Key
+Its a primary key that is composed of 2 or more columns used together to uniquely identify a record in a table.
+- Useful when no single column uniquely identifies records in that table
+- Each column of a composite key must be unique, but can contain duplicated values
+
+#!sql
+
+CREATE TABLE members (
+    first_name VARCHAR(255) NOT NULL,
+    last_name VARCHAR(255),
+    email VARCHAR(255) UNIQUE, -- This makes sure that the email is unique
+    PRIMARY KEY (first_name, last_name)
+);
+
+#!markdown
+
+### Unique Key
+- This is a set of one or more columns that uniquely identifies a record in a relational database table.
+- It is used to enforce referential integrity and prevent duplicate records from being inserted into a table.
+- A table can have more than one unique key.
+- No two rows in a table can have the same values for the unique key.
+
+#!sql
+
+CREATE TABLE users (
+    user_id INTEGER PRIMARY KEY,
+    username VARCHAR(255) UNIQUE, -- Makes sure that the username is unique
+    first_name VARCHAR(255) NOT NULL,
+    last_name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) UNIQUE,  -- Makes sure that the email is unique
+    phone VARCHAR(255) UNIQUE, -- Makes sure that the phone numbers are uniques
+    password VARCHAR(255) NOT NULL
+);
+
+#!markdown
+
+## **Inserting Data**
+- Inserting data into a table is done with the `INSERT INTO` statement.
+- https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-insert/
+
+#!markdown
+
 ## **Creating and Managing Tables**
 
 #!markdown
@@ -441,10 +556,6 @@ CREATE TABLE students (
 This creates a table for students
 id | student_id | firstname | lastname | email | hometown | year | tot_cred | dept_name
 */
-
-#!markdown
-
-### Keys
 
 #!markdown
 
@@ -482,34 +593,6 @@ id | student_id | firstname | lastname | email | hometown | year | tot_cred | de
 
 # **Querying Data**
 ---
-
-#!markdown
-
-## **Keys**
-
-#!markdown
-
-### Primary Key
-This column uniquely identifies each row on the table
-Each of them must be unique.
-    - like student_id, employee_id, social_security_number, username, etc.
-- The primary key can not be Null, and must be unique
-
-#!markdown
-
-### Foreign key
-This is a coulumn that references the primary key of another table
-- Used to maintain referential integrity by creating a link between two tables
-- Ensure that the relationship betwwen two tables remains consisitent
-- The value in the foreign key column must match the primary key in the referenced table or be NULL
-- Allowed to be NULL if the referenced table has a default value for the primary key
-
-#!markdown
-
-### Composite Key
-Its a primary key that is composed of 2 or more columns used together to uniquely identify a record in a table.
-- Useful when no single column uniquely identifies records in that table
-- Each column of a composite key must be unique, but can contain duplicated values
 
 #!markdown
 
