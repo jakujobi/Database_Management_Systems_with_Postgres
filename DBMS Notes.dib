@@ -640,10 +640,6 @@ SELECT distinct home_town
 
 #!markdown
 
-### Order By
-
-#!markdown
-
 ### Column Aliases
 
 #!markdown
@@ -657,6 +653,50 @@ It does not change the data itself
 -- Returns the name and the monthly salary of the instructors
 SELECT name, salary/12 as monthly_salary
     FROM instructor;
+
+#!markdown
+
+## Sorting
+
+#!markdown
+
+### ORDER BY `column_name` ASC/DESC
+Sorts the rows returned in an ascending or descending order
+- Use the ORDER BY clause in the SELECT statement to sort the rows in the query set.
+- Use the ASC option to sort rows in ascending order and DESC option to sort rows in descending order.
+- The ORDER BY clause uses the ASC option by default.
+- Use NULLS FIRST and NULLS LAST options to explicitly specify the order of NULL with other non-null values
+
+#!sql
+
+SELECT 
+  select_list 
+FROM 
+  table_name 
+ORDER BY 
+  sort_expression1 [ASC | DESC], 
+  sort_expression2 [ASC | DESC],
+  ...;
+
+#!sql
+
+SELECT 
+    first_name, last_name, student_ID
+FROM students
+ORDER BY
+    last_name ASC
+    first_name DESC --Sorts by last name, then first name
+    NULLS FIRST --Null values will be sorted first
+
+#!sql
+
+SELECT 
+    first_name, last_name,
+    salary/12 AS average_salary
+    LENGTH (last_name) last_name_length --This calculates the length of the last name
+FROM
+    instructors
+ORDER BY
 
 #!markdown
 
@@ -688,6 +728,10 @@ SELECT name, salary/12 as monthly_salary
 
 #!markdown
 
+### ANY
+
+#!markdown
+
 ### IN
 
 #!markdown
@@ -697,6 +741,10 @@ SELECT name, salary/12 as monthly_salary
 #!markdown
 
 ### As
+
+#!markdown
+
+### HAVING
 
 #!markdown
 
@@ -756,15 +804,7 @@ SELECT name, salary/12 as monthly_salary
 
 #!markdown
 
-### HAVING
-
-#!markdown
-
 ### EXISTS
-
-#!markdown
-
-### ANY
 
 #!markdown
 
@@ -785,3 +825,13 @@ SELECT name, salary/12 as monthly_salary
     - FROM
 - Write variable and other names as lowercase
 - 
+
+#!markdown
+
+## Homework
+
+- sl file
+  - Give the query file with all statements
+- Docx
+  - Include screenshots of the pgadmin
+  - We need to use docker to make sure we can reset the database snapshot to the initial one
