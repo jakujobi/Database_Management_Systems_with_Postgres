@@ -2,7 +2,15 @@
 	"folders": [
 		{
 			"path": "."
+		},
+		{
+			"name": "DBMS_A1_University",
+			"path": "../DBMS_A1_University"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"projectManager.git.baseFolders": [
+			"C:\\Users\\akujo_vr\\OneDrive - South Dakota State University - SDSU\\SDSU-Courses\\CSC 484 - Database Management Systems"
+		]
+	}
 }
