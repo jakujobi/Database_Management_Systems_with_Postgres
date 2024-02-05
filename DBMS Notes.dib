@@ -9,7 +9,7 @@
 #!markdown
 
 - CRUD - Create, Read, Update, Delete
-- There aill be 2 exams
+- There all be 2 exams
 - Written assignments -> 100 points
   - Most homeworks will be written formats
   - No late assignments
@@ -47,7 +47,7 @@
 
 - This is the software that interacts with end users, applications, the database itself to capture and analyse data
 - has all the main facilities to administer the database
-- The admin for postgrasql is pgadmin 4
+- The admin for postgresql is pgadmin 4
 - 
 - **Database System**: Includes the total of the database, dbms and associated apps
 - Database can also be used to refer to the database system or app associated with the database
