@@ -6,6 +6,9 @@
 		{
 			"name": "DBMS_A1_University",
 			"path": "../DBMS_A1_University"
+		},
+		{
+			"path": ".."
 		}
 	],
 	"settings": {
