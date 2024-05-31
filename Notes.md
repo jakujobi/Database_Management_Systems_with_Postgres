@@ -1,3 +1,7 @@
+---
+tags:
+  - Academics
+---
 # Class 1
 
 
